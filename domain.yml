@@ -1,0 +1,68 @@
+version: "3.1"
+
+intents:
+  - greet
+  - book_flight
+  - inform
+  - affirm
+  - deny
+  - goodbye
+  - thanks
+  - out_of_scope
+
+slots:
+  source:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: flight_booking_form
+        requested_slot: source
+  
+  destination:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: flight_booking_form
+        requested_slot: destination
+
+forms:
+  flight_booking_form:
+    required_slots:
+      - source
+      - destination
+
+responses:
+
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
+  utter_greet:
+  - text: "Hello!"
+  
+  utter_goodbye:
+  - text: "Goodbye! Have a great day!"
+
+  utter_thanks:
+  - text: "You're welcome!"
+
+  utter_please_rephrase:
+    - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
+  
+  utter_default:
+    - text: "I'm sorry, I didn't quite understand. I can help you book flights between cities. Would you like to try that?"
+
+actions:
+  - validate_flight_booking_form
+  - action_submit_flight
+  - action_check_flight_form_start
+  - action_ask_source
+  - action_ask_destination
+  - action_reset_flight_form
+  - action_session_start
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false

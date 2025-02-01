@@ -1,0 +1,97 @@
+version: "3.1"
+
+nlu:
+- regex: from_city
+  examples: |
+    - from\s+(\w+)
+    - from\s+(\w+\s+\w+)
+
+- regex: to_city
+  examples: |
+    - to\s+(\w+)
+    - to\s+(\w+\s+\w+)
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - good morning
+    - good evening
+
+- intent: book_flight
+  examples: |
+    - I want to book a flight
+    - book a flight
+    - need to book a flight
+    - I want to book a flight from Dhaka to New York
+    - book a flight from London to Paris
+    - I need to travel from Tokyo to Singapore
+    - want to fly from Dhaka
+    - looking for flights from Mumbai to Dubai
+    - book me a flight from Dhaka to Rajshahi
+    - book tickets from Dhaka
+    - I need to go to Khulna
+
+- intent: inform
+  examples: |
+    - Dhaka
+    - from Dhaka
+    - to New York
+    - New York
+    - London
+    - from London
+    - to Paris
+    - Paris
+    - Dubai
+    - from Dubai
+    - Rajshahi
+    - from Rajshahi
+    - Khulna
+    - to Khulna
+
+- intent: affirm
+  examples: |
+    - yes
+    - indeed
+    - correct
+    - sure
+    - ok
+    - that sounds good
+
+- intent: deny
+  examples: |
+    - no
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you around
+    - see you later
+    - bye bye
+
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - thank you very much
+    - thanks a lot
+    - thank you so much
+    - thank you very much indeed
+    - thanks a bunch
+    - thank you a lot
+    - thank you so much
+    - thank you very much indeed
+    - thanks a bunch
+
+- intent: out_of_scope
+  examples: |
+    - I want to order food
+    - What is 2 + 2?
+    - Who's the US President?
+    - LLLLMMMMM
