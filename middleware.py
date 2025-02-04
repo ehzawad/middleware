@@ -24,7 +24,8 @@ app = FastAPI()
 async def action_webhook(request: Request):
     try:
         incoming_data = await request.json()
-        logger.info("Incoming request: %s", incoming_data)
+        logger.info("################# request from rasa core #################")
+        logger.info("Incoming request from Rasa: %s", incoming_data)
         
         async with httpx.AsyncClient() as client:
             response = await client.post(
@@ -34,7 +35,8 @@ async def action_webhook(request: Request):
             )
             response.raise_for_status()
             response_data = response.json()
-            logger.info("Action response: %s", response_data)
+            logger.info("################# response from action server #################")
+            logger.info("Outgoing response from action server: %s", response_data)
             return response_data
     except httpx.RequestError as e:
         logger.error(f"Connection error: {e}")
